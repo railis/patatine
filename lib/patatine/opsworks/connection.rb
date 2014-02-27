@@ -17,6 +17,7 @@ module Patatine
                 Missing or incorrect AWS credentials.
                 (credentials are taken from environment variables AMAZON_ACCESS_KEY_ID, AMAZON_SECRET_ACCESS_KEY
             }
+        rescue
         end
       end
 

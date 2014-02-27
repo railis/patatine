@@ -1,5 +1,5 @@
 require 'pry'
-%w{opsworks cli}.each do |e|
+%w{opsworks cli dialog}.each do |e|
   require File.dirname(__FILE__) + "/patatine/#{e}"
 end
 

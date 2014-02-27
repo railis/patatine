@@ -4,6 +4,8 @@ module Patatine
       desc "deploy APP ENV", "runs command on opsworks"
 
       def deploy(app, env)
+        connection = Opsworks::Connection.new
+        puts connection.client.inspect
         puts "Running deploy on #{app} #{env}"
       end
 

@@ -43,7 +43,7 @@ module Patatine
 
       def matched?(stack)
         name = stack[:name].downcase
-        !!(name.match(/#{app}/) or name.match(/#{env}/))
+        !!(name.match(/#{app}/) and name.match(/#{env}/))
       end
 
       def get_stacks_from_api

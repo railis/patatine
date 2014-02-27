@@ -3,11 +3,9 @@ module Patatine
     class Application
       class NoMatchedApplicationError < StandardError; end
 
-      attr_reader :app, :env, :stack, :connection
+      attr_reader :stack, :connection
 
-      def initialize(app, env, stack, connection)
-        @app = app
-        @env = env
+      def initialize(stack, connection)
         @stack = stack
         @connection = connection
       end

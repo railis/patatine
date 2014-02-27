@@ -7,8 +7,7 @@ module Patatine
         connection = Opsworks::Connection.new
         stack = Opsworks::Stack.new(app, env, connection).get
         application = Opsworks::Application.new(stack, connection).get
-        puts application.inspect
-        puts "Running deploy on #{app} #{env}"
+        Opsworks::Deployment.new(stack, application, connection).run
       end
 
       desc "update_custom_cookbooks APP ENV", "runs command on opsworks"

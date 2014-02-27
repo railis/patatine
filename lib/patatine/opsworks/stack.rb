@@ -17,6 +17,14 @@ module Patatine
         end
         if matched_stacks.size == 1
           result = matched_stacks.first
+        elsif matched_stacks.size == 0
+          print "No matched stacks found. Would you like to chose from all stacks? (y/n)  "
+          answer = STDIN.gets.chomp
+          if answer == 'y'
+            result = pick_one(all_stacks)
+          else
+            exit 1
+          end
         else
           result = pick_one(matched_stacks)
         end

@@ -18,9 +18,8 @@ module Patatine
         if matched_stacks.size == 1
           result = matched_stacks.first
         elsif matched_stacks.size == 0
-          print "No matched stacks found. Would you like to chose from all stacks? (y/n)  "
-          answer = STDIN.gets.chomp
-          if answer == 'y'
+          notice = "No matched stacks found. Would you like to chose from all stacks?"
+          if Dialog::Confirm.new(notice).ask
             result = pick_one(all_stacks)
           else
             exit 1
@@ -35,7 +34,7 @@ module Patatine
       private
 
       def pick_one(stacks)
-        Dialog.new(
+        Dialog::Options.new(
           "Multiple matching stacks detected.",
           stacks.collect {|e| [e[:name], e]}
         ).ask

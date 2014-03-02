@@ -1,19 +1,20 @@
 module Patatine
   module Opsworks
     class Deployment
-      attr_reader :stack, :app, :connection
+      attr_reader :stack, :app, :connection, :command
 
-      def initialize(stack, app, connection)
+      def initialize(stack, app, connection, command)
         @stack = stack
         @app = app
         @connection = connection
+        @command = command
       end
 
       def run
-        print "Running deployment "
+        print "Running command '#{command}' "
         dep_id = create_deployment
         deployment = wait_until_done(dep_id)
-        puts " Deployment done. Duration: #{get_duration_in_seconds(deployment)} seconds"
+        puts " Done. Duration: #{get_duration_in_seconds(deployment)} seconds"
       end
 
       private
@@ -45,7 +46,7 @@ module Patatine
       def create_deployment
         connection.client.create_deployment(
           :stack_id => stack[:stack_id],
-          :command => {:name => "deploy"}, 
+          :command => {:name => command}, 
           :app_id => app[:app_id]
         )[:deployment_id]
       end

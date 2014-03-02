@@ -3,7 +3,7 @@
 end
 
 module Patatine
-  class Module
+  module Dialog
     class WrongInputError < StandardError; end
     class InvalidOptionsError < StandardError; end
   end

@@ -1,10 +1,10 @@
 module Patatine
   module CLI
     class Console < Thor
-      desc "ssh", "Loggs into ssh"
+      desc "ssh APP ENV", "Loggs into ssh"
 
-      def ssh
-        puts "Blah blah"
+      def ssh(app, env)
+        Opsworks::Console.new(app, env, "ssh").connect!
       end
     end
   end

@@ -1,6 +1,6 @@
 require 'thor'
 
-%w{cmd pt}.each do |e|
+%w{cmd console pt}.each do |e|
   require File.dirname(__FILE__) + "/cli/#{e}"
 end
 

@@ -14,7 +14,8 @@ module Patatine
         print "Running command '#{command}' "
         dep_id = create_deployment
         deployment = wait_until_done(dep_id)
-        puts " Done. Duration: #{get_duration_in_seconds(deployment)} seconds"
+        puts " Done with status (#{deployment[:exit_code]} - #{deployment[:status]}). Duration: #{get_duration_in_seconds(deployment)} seconds"
+        puts "Check logs here: #{deployment[:log_url]}"
       end
 
       private

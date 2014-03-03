@@ -10,7 +10,7 @@ module Patatine
         @command = command
       end
 
-      def run
+      def run!
         print "Running command '#{command}' "
         dep_id = create_deployment
         deployment = wait_until_done(dep_id)
